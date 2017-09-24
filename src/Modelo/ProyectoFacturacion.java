@@ -24,6 +24,7 @@ public class ProyectoFacturacion {
         SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
         VistaMenu menu = new VistaMenu();
         menu.setVisible(true);
+        
     }
     
 }

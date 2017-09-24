@@ -5,30 +5,38 @@
  */
 package Vista;
 
+import Modelo.Conexion;
 import java.util.Calendar;//importamos la clase calendar
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Usuario
+ * @author Daniel P.Calle
  */
 public class VistaMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaMenu
      */
+    Conexion con;
+
     public VistaMenu() {
         initComponents();
-        this.setLocationRelativeTo(this);
-        /**nos proporcionará un objeto Calendar cuyos campos han sido inicializados con la fecha 
-         * y la hora actuales del sistema.*/
+        this.setLocationRelativeTo(this);//Centrar el formulario
+        /**
+         * nos proporcionará un objeto Calendar cuyos campos han sido
+         * inicializados con la fecha y la hora actuales del sistema.
+         */
         Calendar f = Calendar.getInstance();
-        String fecha = f.get(Calendar.DAY_OF_MONTH) + "/"+ f.get(Calendar.MONTH)
-                + "/"+ f.get(Calendar.YEAR);
-        String hora = f.get(Calendar.HOUR_OF_DAY) + ":" 
-                + f.get(Calendar.MINUTE)+ ":" + f.get(Calendar.SECOND);
+        String fecha = f.get(Calendar.DAY_OF_MONTH) + "/" + f.get(Calendar.MONTH)
+                + "/" + f.get(Calendar.YEAR);
+        String hora = f.get(Calendar.HOUR_OF_DAY) + ":"
+                + f.get(Calendar.MINUTE) + ":" + f.get(Calendar.SECOND);
         lbFecha.setText(fecha);
         lbHora.setText(hora);
+        con = new Conexion();
+        con.conexion();
+
     }
 
     /**
@@ -283,13 +291,13 @@ public class VistaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMenuItem5ActionPerformed
 
     private void jCheckBoxMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem6ActionPerformed
-         new VistaEmpleados().setVisible(true);
-         jCheckBoxMenuItem6.setEnabled(false);
+        new VistaEmpleados().setVisible(true);
+        jCheckBoxMenuItem6.setEnabled(false);
     }//GEN-LAST:event_jCheckBoxMenuItem6ActionPerformed
 
     private void jCheckBoxMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem7ActionPerformed
-         new VistaFactura().setVisible(true);
-         jCheckBoxMenuItem7.setEnabled(false);
+        new VistaFactura().setVisible(true);
+        jCheckBoxMenuItem7.setEnabled(false);
     }//GEN-LAST:event_jCheckBoxMenuItem7ActionPerformed
 
     private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
