@@ -13,7 +13,7 @@ import java.sql.*;
  */
 public class Conexion {
 
-    Connection link = null;
+    Connection link = null;//variable de tipo connection 
 
     public Connection conexion() {
 
