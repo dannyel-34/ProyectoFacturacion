@@ -162,7 +162,7 @@ public class VistaCliente extends javax.swing.JFrame {
 
         jLabel12.setText("CIUDAD: ");
 
-        btnGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\ProyectoFacturacion\\src\\Imagenes\\save-32 (1).png")); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BT_save-32.png"))); // NOI18N
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -429,7 +429,7 @@ public class VistaCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 

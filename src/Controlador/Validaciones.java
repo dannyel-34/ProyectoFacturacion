@@ -35,23 +35,20 @@ public class Validaciones {
     }
 
     public boolean validarEmail(String mail) {
-        
-        boolean b = false;
-        
+               
         String emailPattern="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
         Pattern pattern = Pattern.compile(emailPattern);
         Matcher matcher = pattern.matcher(mail);
         
         if(matcher.matches()){
-            b =  true;
+            return true;
         }
         else{
-            b = false;
+            return false;
         }
-        
-        return b;
+       
     }
-    
+      
     public void validarTelefono(char letra, java.awt.event.KeyEvent evt, int num){
         if(num<7){
             solonumeros(letra, evt);
