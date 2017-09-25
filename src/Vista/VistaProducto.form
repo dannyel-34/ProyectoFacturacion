@@ -268,9 +268,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnGuardar">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Usuario\Documents\NetBeansProjects\ProyectoFacturacion\src\Imagenes\save-32 (1).png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="GUARDAR"/>
               </Properties>
             </Component>
@@ -473,9 +470,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton4">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Usuario\Documents\NetBeansProjects\ProyectoFacturacion\src\Imagenes\search-32 (1).png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="BUSCAR"/>
               </Properties>
             </Component>
@@ -519,9 +513,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton9">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Usuario\Documents\NetBeansProjects\ProyectoFacturacion\src\Imagenes\editor-document-file-add-2-outline-stroke-32.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="NUEVO"/>
               </Properties>
             </Component>

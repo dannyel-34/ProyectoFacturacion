@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import Vista.VistaMenu;
+import Vista.*;
 import javax.swing.JFrame;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
@@ -24,6 +24,8 @@ public class ProyectoFacturacion {
         SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
         VistaMenu menu = new VistaMenu();
         menu.setVisible(true);
+        //VistaLogin login = new VistaLogin();
+        //login.show();
         
     }
     

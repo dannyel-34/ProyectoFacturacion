@@ -19,7 +19,7 @@ public class CargarFoto extends javax.swing.JFrame {
     
     public CargarFoto() {
         initComponents();
-        
+        this.setLocationRelativeTo(this);
     }
 
     /**

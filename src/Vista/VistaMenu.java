@@ -28,7 +28,7 @@ public class VistaMenu extends javax.swing.JFrame {
          * inicializados con la fecha y la hora actuales del sistema.
          */
         Calendar f = Calendar.getInstance();
-        String fecha = f.get(Calendar.DAY_OF_MONTH) + "/" + f.get(Calendar.MONTH)
+        String fecha = f.get(Calendar.DATE) + "/" + f.get(Calendar.MONTH)
                 + "/" + f.get(Calendar.YEAR);
         String hora = f.get(Calendar.HOUR_OF_DAY) + ":"
                 + f.get(Calendar.MINUTE) + ":" + f.get(Calendar.SECOND);
@@ -243,6 +243,11 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jCheckBoxMenuItem12.setSelected(true);
         jCheckBoxMenuItem12.setText("Creadores");
+        jCheckBoxMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jCheckBoxMenuItem12);
 
         jCheckBoxMenuItem13.setSelected(true);
@@ -257,18 +262,17 @@ public class VistaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(283, 283, 283)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(314, 314, 314))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
+                .addGap(171, 171, 171)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+                .addGap(168, 168, 168)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -307,7 +311,7 @@ public class VistaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
 
     private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem2ActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Esta seguro de cerrar", "cerar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(this, "Esta seguro de Cerrar sesion", "cerar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             dispose();
             new VistaLogin().setVisible(true);
         }
@@ -322,6 +326,10 @@ public class VistaMenu extends javax.swing.JFrame {
         new ConsultaEmpleados().setVisible(true);
         jCheckBoxMenuItem10.setEnabled(false);
     }//GEN-LAST:event_jCheckBoxMenuItem10ActionPerformed
+
+    private void jCheckBoxMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem12ActionPerformed
+        new Creador().setVisible(true);
+    }//GEN-LAST:event_jCheckBoxMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
