@@ -25,7 +25,7 @@ public class ProyectoFacturacion {
         VistaMenu menu = new VistaMenu();
         menu.setVisible(true);
         //VistaLogin login = new VistaLogin();
-        //login.show();
+        //login.setVisible(true);
         
     }
     

@@ -14,9 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class Operaciones {
 
-    VistaLogin login = new VistaLogin();
+    
+    //VistaLogin login = new VistaLogin();
 
-    public void Ingresar(String usu, char clave[]) {
+    /**
+     * public void Ingresar(String usu, char clave[]) {
 
         String clavedef = new String(clave);
 
@@ -33,6 +35,6 @@ public class Operaciones {
                     JOptionPane.ERROR_MESSAGE);
         }
 
-    }
+    }**/
 
 }
