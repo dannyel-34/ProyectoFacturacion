@@ -22,10 +22,10 @@ public class ProyectoFacturacion {
         JFrame.setDefaultLookAndFeelDecorated(true);
         SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.SubstanceMangoLookAndFeel");
         SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
-        VistaMenu menu = new VistaMenu();
-        menu.setVisible(true);
-        //VistaLogin login = new VistaLogin();
-        //login.setVisible(true);
+        //VistaMenu menu = new VistaMenu();
+        //menu.setVisible(true);
+        VistaLogin login = new VistaLogin();
+        login.setVisible(true);
         
     }
     

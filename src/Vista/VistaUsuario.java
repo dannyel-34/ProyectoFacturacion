@@ -6,8 +6,12 @@
 package Vista;
 
 import Controlador.Validaciones;
+import Modelo.*;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,8 +25,9 @@ public class VistaUsuario extends javax.swing.JFrame {
      */
     Validaciones v;
     DefaultTableModel table;
-    
-    
+    Conexion con;
+    CrudUsuario crudUser;
+
     public VistaUsuario() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -36,7 +41,8 @@ public class VistaUsuario extends javax.swing.JFrame {
         table.addColumn("Email");
         table.addColumn("Rol");
         tblUsuarios.setModel(table);
-        
+        con = new Conexion();
+        crudUser = new CrudUsuario();
     }
 
     /**
@@ -187,9 +193,12 @@ public class VistaUsuario extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("E-MAIL: ");
 
-        txtCodUsuario.setEditable(false);
-
         cbxRolUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Administrador", "Vendedor", "Axuliar " }));
+        cbxRolUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxRolUsuarioActionPerformed(evt);
+            }
+        });
 
         txtApellidoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -292,8 +301,8 @@ public class VistaUsuario extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(253, 253, 253)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -394,21 +403,41 @@ public class VistaUsuario extends javax.swing.JFrame {
 
         if (cont == 0) {
             JOptionPane.showMessageDialog(null, "Se ha llenado el formulario con exito!", "Okay", JOptionPane.INFORMATION_MESSAGE);
-        }
+        } 
     }
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
+        /**
+         * if (validar()) { try {
+         * crudUser.InsertarUsuario(cbxRolUsuario.getModel().getSelectedItem().toString(),
+         * txtClaveUsuario.getPassword(),
+         * txtConfirmarClaveUsuario.getPassword(), txtNombreUsuario.getText(),
+         * txtApellidoUsuario.getText(), txtEmail.getText(),
+         * txtNombreUsuario.getText().charAt(0)+txtApellidoUsuario.getText()); }
+         * catch (SQLException ex) {
+         * Logger.getLogger(VistaUsuario.class.getName()).log(Level.SEVERE,
+         * null, ex); } } else { JOptionPane.showMessageDialog(null, "Complete
+         * los campos", "Error", JOptionPane.ERROR_MESSAGE); }
+         *
+         * 
+         */
+        
         validar();
+        
+        if (v.validarListaRol(cbxRolUsuario.getModel().getSelectedItem().toString())) {
+            JOptionPane.showMessageDialog(null, "Señor Usuario ingrese un valor de la lista!");
+        }else{
+            Vector datos = new Vector();
+            datos.addElement(txtNombreUsuario.getText().toLowerCase());
+            datos.addElement(txtApellidoUsuario.getText().toLowerCase());
+            datos.addElement(txtEmail.getText().toLowerCase());
+            datos.addElement(cbxRolUsuario.getSelectedItem());
+            datos.addElement(evt);
+            table.addRow(datos);
+            tblUsuarios.setModel(table);
+        }
 
-        Vector datos = new Vector();
-        datos.addElement(txtNombreUsuario.getText().toLowerCase());
-        datos.addElement(txtApellidoUsuario.getText().toLowerCase());
-        datos.addElement(txtEmail.getText().toLowerCase());
-        datos.addElement(cbxRolUsuario.getSelectedItem());
-        datos.addElement(evt);
-        table.addRow(datos);
-        tblUsuarios.setModel(table);
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -421,6 +450,7 @@ public class VistaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoUsuarioKeyTyped
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+
         if (JOptionPane.showConfirmDialog(this, "Esta seguro de cerrar", "cerar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             dispose();
             new VistaMenu().setVisible(true);
@@ -442,10 +472,14 @@ public class VistaUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuKeyTyped
 
-   
+
     private void txtUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuActionPerformed
-       txtUsu.setText((String)(txtNombreUsuario.getText().charAt(0) + txtApellidoUsuario.getText() + "012").toLowerCase());
+        txtUsu.setText((String) (txtNombreUsuario.getText().charAt(0) + txtApellidoUsuario.getText() + "012").toLowerCase());
     }//GEN-LAST:event_txtUsuActionPerformed
+
+    private void cbxRolUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRolUsuarioActionPerformed
+       
+    }//GEN-LAST:event_cbxRolUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

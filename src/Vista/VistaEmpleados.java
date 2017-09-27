@@ -6,8 +6,9 @@
 package Vista;
 
 import Controlador.Validaciones;
+import java.util.Vector;
 import javax.swing.JOptionPane;
-
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Usuario
@@ -19,6 +20,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
      */
     
     Validaciones v;
+    DefaultTableModel table;
     
     public VistaEmpleados() {
         initComponents();
@@ -29,6 +31,17 @@ public class VistaEmpleados extends javax.swing.JFrame {
         lbVal3.setVisible(false);
         lbVal4.setVisible(false);
         lbVal5.setVisible(false);
+        table = new DefaultTableModel();
+        table.addColumn("Nombre");
+        table.addColumn("Apellido");
+        table.addColumn("Documento");
+        table.addColumn("Tipo");
+        table.addColumn("Telefono");
+        table.addColumn("Celular");
+        table.addColumn("Direccion");
+        tblEmpleado.setModel(table);
+        
+        
     }
 
     /**
@@ -73,7 +86,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
         lbVal5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblEmpleado = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -345,7 +358,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -361,7 +374,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblEmpleado);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refresh-32.png"))); // NOI18N
         jButton6.setText("MODIFICAR");
@@ -505,6 +518,27 @@ public class VistaEmpleados extends javax.swing.JFrame {
     }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         validar();
+        
+        Vector d = new Vector();
+        d.addElement(txtNombreEmpleado.getText());
+        d.addElement(txtApellidoEmpleado.getText());
+        d.addElement(txtDocEmpleado.getText());
+        d.addElement(cbxTipoDoc.getSelectedItem());
+        d.addElement(txtTelefonoEmpleado.getText());
+        d.addElement(txtCelularEmpleado.getText());
+        d.addElement(txtDireccion.getText());
+        table.addRow(d);//insertamos un registro en la tabla
+        tblEmpleado.setModel(table);//Muestra la tabla
+        
+        txtNombreEmpleado.setText(null);
+        txtApellidoEmpleado.setText(null);
+        txtDocEmpleado.setText(null);
+        cbxTipoDoc.setSelectedIndex(0);
+        txtTelefonoEmpleado.setText(null);
+        txtCelularEmpleado.setText(null);
+        txtDireccion.setText(null);
+       
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtNombreEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoKeyTyped
@@ -593,12 +627,12 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbVal1;
     private javax.swing.JLabel lbVal2;
     private javax.swing.JLabel lbVal3;
     private javax.swing.JLabel lbVal4;
     private javax.swing.JLabel lbVal5;
+    private javax.swing.JTable tblEmpleado;
     private javax.swing.JTextField txtApellidoEmpleado;
     private javax.swing.JTextField txtCelularEmpleado;
     private javax.swing.JTextField txtCodEmpleado;

@@ -133,7 +133,6 @@ public class VistaProducto extends javax.swing.JFrame {
             }
         });
 
-        btnGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\ProyectoFacturacion\\src\\Imagenes\\save-32 (1).png")); // NOI18N
         btnGuardar.setText("GUARDAR");
 
         jLabel7.setText("STOCK: ");
@@ -261,6 +260,8 @@ public class VistaProducto extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("PRODUCTOS", jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -287,7 +288,6 @@ public class VistaProducto extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\ProyectoFacturacion\\src\\Imagenes\\search-32 (1).png")); // NOI18N
         jButton4.setText("BUSCAR");
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/86-32.png"))); // NOI18N
@@ -312,7 +312,6 @@ public class VistaProducto extends javax.swing.JFrame {
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/file_Exel_download-32.png"))); // NOI18N
         jButton8.setText("EXECEL");
 
-        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\ProyectoFacturacion\\src\\Imagenes\\editor-document-file-add-2-outline-stroke-32.png")); // NOI18N
         jButton9.setText("NUEVO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

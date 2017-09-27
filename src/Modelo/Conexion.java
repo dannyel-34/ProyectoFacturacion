@@ -33,6 +33,12 @@ public class Conexion {
         }
 
         return link;//Retornamos el resultado obtenido en la conexion.
-
+        
+    }
+    
+    public void finalizar() throws SQLException{
+        link.close();
     }
 }
+
+

@@ -275,8 +275,8 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
-                      <Component id="btnGuardar" min="-2" pref="158" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="btnGuardar" min="-2" pref="157" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Component id="btnSalir" min="-2" pref="155" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -396,9 +396,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCodUsuario">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbxRolUsuario">
               <Properties>
@@ -411,6 +408,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxRolUsuarioActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>

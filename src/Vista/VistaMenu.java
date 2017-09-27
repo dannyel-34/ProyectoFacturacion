@@ -27,7 +27,7 @@ public class VistaMenu extends javax.swing.JFrame {
          * nos proporcionará un objeto Calendar cuyos campos han sido
          * inicializados con la fecha y la hora actuales del sistema.
          */
-        Calendar f = Calendar.getInstance();
+        Calendar f = Calendar.getInstance();//obteniendo una instancia de la fecha actual asignando al objecto f de la clase Calender
         String fecha = f.get(Calendar.DATE) + "/" + f.get(Calendar.MONTH)
                 + "/" + f.get(Calendar.YEAR);
         String hora = f.get(Calendar.HOUR_OF_DAY) + ":"
@@ -36,6 +36,7 @@ public class VistaMenu extends javax.swing.JFrame {
         lbHora.setText(hora);
         con = new Conexion();
         con.conexion();
+        
 
     }
 
