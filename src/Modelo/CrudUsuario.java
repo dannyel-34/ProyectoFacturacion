@@ -153,10 +153,11 @@ public class CrudUsuario {
      * convertimos el array en un String
      */
     public void IngresarUsuario(String usuario, char clave[]) {
-        VistaMenu m = new VistaMenu();
+
         String clavedef = new String(clave);
 
         if (usuario.equals("Admin") && clavedef.equals("123")) {
+            VistaMenu m = new VistaMenu();
             m.dispose();
             ac = new ActionListener() {
 
