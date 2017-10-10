@@ -6,9 +6,14 @@
 package Vista;
 
 import Controlador.Validaciones;
+import Modelo.CrudEmpleado;
+import java.sql.SQLException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
@@ -20,8 +25,9 @@ public class VistaEmpleados extends javax.swing.JFrame {
      */
     
     Validaciones v;
+    CrudEmpleado crudEmp;
     DefaultTableModel table;
-    
+
     public VistaEmpleados() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -40,8 +46,8 @@ public class VistaEmpleados extends javax.swing.JFrame {
         table.addColumn("Celular");
         table.addColumn("Direccion");
         tblEmpleado.setModel(table);
-        
-        
+        crudEmp = new CrudEmpleado();
+
     }
 
     /**
@@ -56,8 +62,6 @@ public class VistaEmpleados extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtCodEmpleado = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtNombreEmpleado = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -96,10 +100,6 @@ public class VistaEmpleados extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setText("CODIGO: ");
-
-        txtCodEmpleado.setEditable(false);
 
         jLabel2.setText("NOMBRE: ");
 
@@ -223,12 +223,24 @@ public class VistaEmpleados extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(66, 66, 66)
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                                .addComponent(lbVal5)))
+                        .addGap(305, 305, 305))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel1))
+                                    .addComponent(jLabel2)
                                     .addGap(81, 81, 81))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel3)
@@ -243,8 +255,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
                             .addComponent(txtDocEmpleado)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                             .addComponent(txtApellidoEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                            .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbVal1)
@@ -275,32 +286,14 @@ public class VistaEmpleados extends javax.swing.JFrame {
                                         .addComponent(txtTelefonoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lbVal3)))
-                                .addGap(41, 41, 41))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(66, 66, 66)
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                .addComponent(lbVal5)))
-                        .addGap(305, 305, 305))))
+                                .addGap(41, 41, 41))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(104, 104, 104)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCodEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,73 +456,80 @@ public class VistaEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
 
-    int cont=0;
-    
-    public void validar(){
-        cont=0;
-        
-        if(txtNombreEmpleado.getText().equals("")){
+    int cont = 0;
+
+    public void validar() {
+        cont = 0;
+
+        if (txtNombreEmpleado.getText().equals("")) {
             lbVal1.setVisible(true);
             cont++;
-        }
-        else{
+        } else {
             lbVal1.setVisible(false);
         }
-        
-        if(txtNombreEmpleado.getText().equals("")){
+
+        if (txtNombreEmpleado.getText().equals("")) {
             lbVal1.setVisible(true);
             cont++;
-        }
-        else{
+        } else {
             lbVal1.setVisible(false);
         }
-        
-        if(txtApellidoEmpleado.getText().equals("")){
+
+        if (txtApellidoEmpleado.getText().equals("")) {
             lbVal2.setVisible(true);
             cont++;
-        }
-        else{
+        } else {
             lbVal2.setVisible(false);
         }
-        
-        if(txtTelefonoEmpleado.getText().equals("")){
+
+        if (txtTelefonoEmpleado.getText().equals("")) {
             lbVal3.setVisible(true);
             cont++;
-        }
-        else{
+        } else {
             lbVal3.setVisible(false);
         }
-        
-        if(txtDireccion.getText().equals("")){
+
+        if (txtDireccion.getText().equals("")) {
             lbVal5.setVisible(true);
             cont++;
-        }
-        else{
+        } else {
             lbVal5.setVisible(false);
         }
-        
-        if(txtDocEmpleado.getText().equals("")){
+
+        if (txtDocEmpleado.getText().equals("")) {
             lbVal4.setVisible(true);
             cont++;
-        }
-        else{
+        } else {
             lbVal4.setVisible(false);
         }
     }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
         validar();
-        
-        Vector d = new Vector();
-        d.addElement(txtNombreEmpleado.getText());
-        d.addElement(txtApellidoEmpleado.getText());
-        d.addElement(txtDocEmpleado.getText());
-        d.addElement(cbxTipoDoc.getSelectedItem());
-        d.addElement(txtTelefonoEmpleado.getText());
-        d.addElement(txtCelularEmpleado.getText());
-        d.addElement(txtDireccion.getText());
-        table.addRow(d);//insertamos un registro en la tabla
-        tblEmpleado.setModel(table);//Muestra la tabla
-        
+
+        String genero = "";
+
+        if (jRadioButton1.getText().equals("Masculino")) {
+            genero = jRadioButton1.getText();
+        } else {
+            genero = jRadioButton2.getText();
+        }
+
+        if (v.validarListaTipoDocumento(cbxTipoDoc.getModel().getSelectedItem().toString())) {
+            JOptionPane.showMessageDialog(null, "Señor Usuario ingrese un valor de la lista!");
+        } else {
+
+            try {
+                crudEmp.Insertar(txtDocEmpleado.getText(), txtNombreEmpleado.getText().toLowerCase(),
+                        txtApellidoEmpleado.getText().toLowerCase(), txtTelefonoEmpleado.getText(),
+                        txtCelularEmpleado.getText(), jDateChooser1.getDateFormatString(),
+                        genero, cbxTipoDoc.getModel().getSelectedItem().toString(), txtDireccion.getText());
+
+            } catch (SQLException e) {
+                Logger.getLogger(VistaEmpleados.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+
         txtNombreEmpleado.setText(null);
         txtApellidoEmpleado.setText(null);
         txtDocEmpleado.setText(null);
@@ -537,8 +537,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
         txtTelefonoEmpleado.setText(null);
         txtCelularEmpleado.setText(null);
         txtDireccion.setText(null);
-       
-        
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtNombreEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoKeyTyped
@@ -562,7 +561,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDocEmpleadoKeyTyped
 
     private void jDateChooser1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooser1KeyTyped
-        
+
     }//GEN-LAST:event_jDateChooser1KeyTyped
 
     /**
@@ -611,7 +610,6 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -635,7 +633,6 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private javax.swing.JTable tblEmpleado;
     private javax.swing.JTextField txtApellidoEmpleado;
     private javax.swing.JTextField txtCelularEmpleado;
-    private javax.swing.JTextField txtCodEmpleado;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDocEmpleado;
     private javax.swing.JTextField txtNombreEmpleado;

@@ -14,8 +14,10 @@ import java.sql.Statement;
  */
 public class CrudCliente {
     public Conexion con = new Conexion();
-    //public PreparedStatement stm;
-    //public Statement stm2;
+    public PreparedStatement stm;
+    public Statement stm2;
+    
+    
     
     
 }

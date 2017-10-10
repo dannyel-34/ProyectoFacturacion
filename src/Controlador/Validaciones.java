@@ -25,6 +25,14 @@ public class Validaciones {
         }
         
     }
+    
+    public boolean validarListaTipoDocumento(String tipo){
+        if(tipo.equals("Seleccione...")){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public void solotexto(char letra, java.awt.event.KeyEvent evt) {
         if ((letra < 'a' || letra > 'z') && (letra < 'A' || letra > 'Z') && letra != KeyEvent.VK_BACKSPACE && letra != ' ') {
