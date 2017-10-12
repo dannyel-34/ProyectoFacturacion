@@ -6,9 +6,9 @@
 package Vista;
 
 import Controlador.Validaciones;
+import Modelo.Conexion;
 import Modelo.CrudEmpleado;
 import java.sql.SQLException;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,11 +23,10 @@ public class VistaEmpleados extends javax.swing.JFrame {
     /**
      * Creates new form VistaEmpleados
      */
-    
     Validaciones v;
-    CrudEmpleado crudEmp;
     DefaultTableModel table;
-
+    Conexion con;
+    
     public VistaEmpleados() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -37,17 +36,8 @@ public class VistaEmpleados extends javax.swing.JFrame {
         lbVal3.setVisible(false);
         lbVal4.setVisible(false);
         lbVal5.setVisible(false);
-        table = new DefaultTableModel();
-        table.addColumn("Nombre");
-        table.addColumn("Apellido");
-        table.addColumn("Documento");
-        table.addColumn("Tipo");
-        table.addColumn("Telefono");
-        table.addColumn("Celular");
-        table.addColumn("Direccion");
-        tblEmpleado.setModel(table);
-        crudEmp = new CrudEmpleado();
-
+        con = new Conexion();
+        con.conexion();
     }
 
     /**
@@ -502,9 +492,13 @@ public class VistaEmpleados extends javax.swing.JFrame {
         } else {
             lbVal4.setVisible(false);
         }
+        
+        if (cont == 0) {
+            JOptionPane.showMessageDialog(null, "Se ha llenado el formulario con exito!", "Okay", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+
         validar();
 
         String genero = "";
@@ -518,25 +512,22 @@ public class VistaEmpleados extends javax.swing.JFrame {
         if (v.validarListaTipoDocumento(cbxTipoDoc.getModel().getSelectedItem().toString())) {
             JOptionPane.showMessageDialog(null, "Señor Usuario ingrese un valor de la lista!");
         } else {
-
             try {
-                crudEmp.Insertar(txtDocEmpleado.getText(), txtNombreEmpleado.getText().toLowerCase(),
+                con.Insertar(txtDocEmpleado.getText(), txtNombreEmpleado.getText().toLowerCase(),
                         txtApellidoEmpleado.getText().toLowerCase(), txtTelefonoEmpleado.getText(),
                         txtCelularEmpleado.getText(), jDateChooser1.getDateFormatString(),
                         genero, cbxTipoDoc.getModel().getSelectedItem().toString(), txtDireccion.getText());
-
             } catch (SQLException e) {
                 Logger.getLogger(VistaEmpleados.class.getName()).log(Level.SEVERE, null, e);
             }
         }
 
+        txtDocEmpleado.setText(null);
         txtNombreEmpleado.setText(null);
         txtApellidoEmpleado.setText(null);
-        txtDocEmpleado.setText(null);
-        cbxTipoDoc.setSelectedIndex(0);
         txtTelefonoEmpleado.setText(null);
         txtCelularEmpleado.setText(null);
-        txtDireccion.setText(null);
+
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -549,7 +540,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoEmpleadoKeyTyped
 
     private void txtTelefonoEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoEmpleadoKeyTyped
-        v.solonumeros(evt.getKeyChar(), evt);
+        v.validarTelefono(evt.getKeyChar(), evt, txtTelefonoEmpleado.getText().length());
     }//GEN-LAST:event_txtTelefonoEmpleadoKeyTyped
 
     private void txtCelularEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularEmpleadoKeyTyped

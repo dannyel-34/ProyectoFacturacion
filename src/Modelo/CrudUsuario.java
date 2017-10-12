@@ -28,12 +28,13 @@ public class CrudUsuario {
     private ActionListener ac;
     int x = 0;
    
-    public void InsertarUsuario(String rol, char[] clave, 
+    public void InsertarUsuario(String cod, String rol, char[] clave, 
             String usuario, String email) throws SQLException {
 
         String clavedef = new String(clave);
 
-        stm = con.link.prepareStatement("INSERT INTO USUARIO (CODIGO, ROL, CLAVE, USUARIO, EMAIL) VALUES (?,?,?,?,?,)");
+        stm = con.conexion.prepareStatement("INSERT INTO usuario (CODIGO, ROL, CLAVE, USUARIO, EMAIL) VALUES (?,?,?,?,?)");
+        stm.setString(1, cod);
         stm.setString(2, rol);
         stm.setString(3, clavedef);
         stm.setString(4, usuario);

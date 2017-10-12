@@ -354,17 +354,18 @@ public class VistaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
         validar();
-
+        int conusu=0;
+        String codigo = "USU000" +conusu++;
+        
+        
         if (v.validarListaRol(cbxRolUsuario2.getModel().getSelectedItem().toString())) {
             JOptionPane.showMessageDialog(null, "Señor Usuario ingrese un valor de la lista!");
         } else {
-
             try {
-                crudUser.InsertarUsuario(cbxRolUsuario2.getModel().getSelectedItem().toString(),
-                        txtClaveUsuario.getPassword(), txtNombreUsuario.getText().toLowerCase(),
-                        txtEmail.getText().toLowerCase());
+                crudUser.InsertarUsuario(codigo, cbxRolUsuario2.getModel().getSelectedItem().toString(),
+                        txtClaveUsuario.getPassword(), txtNombreUsuario.getText(),
+                        txtEmail.getText());
             } catch (SQLException ex) {
                 Logger.getLogger(VistaUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }

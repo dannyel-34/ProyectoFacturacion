@@ -6,6 +6,7 @@
 package Modelo;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,32 +14,39 @@ import java.sql.*;
  */
 public class Conexion {
 
-    Connection link = null;//variable de tipo connection 
-
-    public Connection conexion() {
-
+    public Connection conexion;
+    public PreparedStatement stm;
+    public Statement stm2;
+    
+    public void conexion() {
         try {
-
-            // Se crea una instancia de la clase manejadora de mySQL(DriverManager)
-            Class.forName("org.gjt.mm.mysql.Driver");
-
-            // Se conecta con la base de datos
-            link = DriverManager.getConnection("jdbc:mysql://localhost/dbfacturacion", "root", "");
-
+            Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost/dbfacturacion", "root", "");
             System.out.println("Conexión exitosa!");//si no hubo ningun problema a comunicar la bd. nos imprime mensaje de caracteres.
         } catch (Exception ex) {
-
             System.out.printf("Error al conectarse a la base de datos" + ex.getMessage());
-
         }
+    }
 
-        return link;//Retornamos el resultado obtenido en la conexion.
-        
+    public void Insertar(String doc, String nombre, String apellido, String tel, String celular,
+            String fecha_nacim, String sexo, String tipoDoc, String dir) throws SQLException {
+
+        stm = conexion.prepareStatement("insert into tblempleado(nocedula, nombre, apellido, telefono, celular, fechanacimiento, genero, tipodoc, direccion) values(?,?,?,?,?,?,?,?,?)");
+        stm.setString(1, doc);
+        stm.setString(2, nombre);
+        stm.setString(3, apellido);
+        stm.setString(4, tel);
+        stm.setString(5, celular);
+        stm.setString(6, fecha_nacim);
+        stm.setString(7, sexo);
+        stm.setString(8, tipoDoc);
+        stm.setString(9, dir);
+        stm.execute();
+        JOptionPane.showMessageDialog(null, "Los datos fueron guardados con éxito!", "OK",
+                JOptionPane.INFORMATION_MESSAGE);
     }
     
-    public void finalizar() throws SQLException{
-        link.close();
+    public void finalizar() throws SQLException {
+        conexion.close();
     }
 }
-
-

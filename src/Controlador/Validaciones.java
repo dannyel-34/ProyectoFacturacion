@@ -17,21 +17,11 @@ import java.util.regex.Pattern;
 public class Validaciones {
 
     public boolean validarListaRol(String rol) {
-
-        if (rol.equals("Seleccione...")) {
-            return true;
-        } else {
-            return false;
-        }
-        
+        return rol.equals("Seleccione...");
     }
-    
-    public boolean validarListaTipoDocumento(String tipo){
-        if(tipo.equals("Seleccione...")){
-            return true;
-        }else{
-            return false;
-        }
+
+    public boolean validarListaTipoDocumento(String tipo) {
+        return tipo.equals("Seleccione...");
     }
 
     public void solotexto(char letra, java.awt.event.KeyEvent evt) {
@@ -58,11 +48,7 @@ public class Validaciones {
         Pattern pattern = Pattern.compile(emailPattern);
         Matcher matcher = pattern.matcher(mail);
 
-        if (matcher.matches()) {
-            return true;
-        } else {
-            return false;
-        }
+        return matcher.matches();
 
     }
 
@@ -70,8 +56,9 @@ public class Validaciones {
         if (num < 7) {
             solonumeros(letra, evt);
         } else if (num >= 7 && num < 10) {
-            JOptionPane.showMessageDialog(null, "Por favor no ingrese mas digitos. Telefono es correcto", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El telefono ingresado debe ser de 7 digitos", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
     }
 
 }

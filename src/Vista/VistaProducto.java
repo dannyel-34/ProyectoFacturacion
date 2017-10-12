@@ -134,6 +134,11 @@ public class VistaProducto extends javax.swing.JFrame {
         });
 
         btnGuardar.setText("GUARDAR");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("STOCK: ");
 
@@ -452,6 +457,10 @@ public class VistaProducto extends javax.swing.JFrame {
     private void txtStockProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockProductoKeyTyped
         v.solonumeros(evt.getKeyChar(), evt);
     }//GEN-LAST:event_txtStockProductoKeyTyped
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
