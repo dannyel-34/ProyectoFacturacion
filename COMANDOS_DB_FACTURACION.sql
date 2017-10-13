@@ -26,7 +26,7 @@ tipodoc VARCHAR(50),
 direccion VARCHAR(100));
 
 
-select * from tblempleado;
+SELECT * FROM tblempleado;
 
 
 

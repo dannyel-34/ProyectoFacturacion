@@ -439,7 +439,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void txtTelefonoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoEmpleadoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtTelefonoEmpleadoActionPerformed
 
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
@@ -540,11 +540,11 @@ public class VistaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoEmpleadoKeyTyped
 
     private void txtTelefonoEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoEmpleadoKeyTyped
-        v.validarTelefono(evt.getKeyChar(), evt, txtTelefonoEmpleado.getText().length());
+        v.solonumeros(evt.getKeyChar(), evt);
     }//GEN-LAST:event_txtTelefonoEmpleadoKeyTyped
 
     private void txtCelularEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularEmpleadoKeyTyped
-        v.solonumeros(evt.getKeyChar(), evt);
+        v.validarTelefono(evt.getKeyChar(), evt, txtTelefonoEmpleado.getText().length());
     }//GEN-LAST:event_txtCelularEmpleadoKeyTyped
 
     private void txtDocEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDocEmpleadoKeyTyped

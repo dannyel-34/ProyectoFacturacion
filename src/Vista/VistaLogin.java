@@ -29,8 +29,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
     public VistaLogin() {
         initComponents();
-        this.setLocationRelativeTo(this);
-       
+        this.setLocationRelativeTo(this);   
         crudUser = new CrudUsuario();
     }
 

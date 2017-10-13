@@ -52,11 +52,12 @@ public class Validaciones {
 
     }
 
-    public void validarTelefono(char letra, java.awt.event.KeyEvent evt, int num) {
-        if (num < 7) {
+    public void validarTelefono(char letra, java.awt.event.KeyEvent evt, int dato) {
+       
+        if(dato<7){
             solonumeros(letra, evt);
-        } else if (num >= 7 && num < 10) {
-            JOptionPane.showMessageDialog(null, "El telefono ingresado debe ser de 7 digitos", "Error", JOptionPane.ERROR_MESSAGE);
+        }else if(dato>=10&&dato<7){
+            JOptionPane.showMessageDialog(null, "Ingrese un telefono de 7 digitos", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }
