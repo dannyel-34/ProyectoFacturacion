@@ -17,11 +17,12 @@ public class Conexion {
     public Connection conexion;
     public PreparedStatement stm;
     public Statement stm2;
-    
+
     public void conexion() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost/dbfacturacion", "root", "");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            //conexion = DriverManager.getConnection("jdbc:mysql://localhost/facturacion", "root", "");
+            conexion = DriverManager.getConnection("jdbc:sqlserver://DANIELLE:1433;databaseName=VENTA", "sa", "123");
             System.out.println("Conexión exitosa!");//si no hubo ningun problema a comunicar la bd. nos imprime mensaje de caracteres.
         } catch (Exception ex) {
             System.out.printf("Error al conectarse a la base de datos" + ex.getMessage());
@@ -45,7 +46,7 @@ public class Conexion {
         JOptionPane.showMessageDialog(null, "Los datos fueron guardados con éxito!", "OK",
                 JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     public void finalizar() throws SQLException {
         conexion.close();
     }
