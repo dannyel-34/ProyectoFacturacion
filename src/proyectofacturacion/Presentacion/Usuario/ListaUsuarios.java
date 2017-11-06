@@ -219,7 +219,7 @@ public final class ListaUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flat_seo2-29-20 (1).png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar.png"))); // NOI18N
         btnBuscar.setText("BUSCAR ");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,7 +240,7 @@ public final class ListaUsuarios extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblusuarios);
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/system-log-out-32.png"))); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/free-29-32.png"))); // NOI18N
         btnSalir.setText("SALIR");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,7 +248,7 @@ public final class ListaUsuarios extends javax.swing.JFrame {
             }
         });
 
-        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/close.png"))); // NOI18N
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar2.png"))); // NOI18N
         btnActualizar.setText("ELIMINAR");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,7 +256,7 @@ public final class ListaUsuarios extends javax.swing.JFrame {
             }
         });
 
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/new.png"))); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nuevo.png"))); // NOI18N
         btnAgregar.setText("AGREGAR");
 
         btnmostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/show.png"))); // NOI18N
@@ -300,8 +300,8 @@ public final class ListaUsuarios extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,8 +361,6 @@ public final class ListaUsuarios extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Esta seguro de cerrar", "cerar",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            VistaMenu m = new VistaMenu();
-            m.setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed

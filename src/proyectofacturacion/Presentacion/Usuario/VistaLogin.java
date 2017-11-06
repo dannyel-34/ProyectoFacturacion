@@ -84,7 +84,7 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
 
-        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-Entrar-26.png"))); // NOI18N
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login-32.png"))); // NOI18N
         btnEntrar.setText("INGRESAR");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +92,7 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-Salir redondeado-26.png"))); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/free-29-32.png"))); // NOI18N
         btnSalir.setText("SALIR");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +110,7 @@ public class VistaLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -153,8 +153,8 @@ public class VistaLogin extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38))
         );
 
@@ -198,20 +198,20 @@ public class VistaLogin extends javax.swing.JFrame {
                             x++;
                             jProgressBar1.setValue(x);
 
-                            if (jProgressBar1.getValue() == 50) {
+                            if (jProgressBar1.getValue() == 100) {
                                 t.stop();
                                 dispose();
                             }
                         }
                     };
-                    t = new Timer(50, ac);
+                    t = new Timer(100, ac);
                     t.start();
-                    dispose();
+                    
 
                     JOptionPane.showMessageDialog(null, "Bienvenido\n"
                             + "Has ingresado satisfactoriamente al sistema", "Mensaje de bienvenida",
                             JOptionPane.INFORMATION_MESSAGE);
-
+                    dispose();
                     m.setVisible(true);
 
                 } else {

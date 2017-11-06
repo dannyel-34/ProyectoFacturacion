@@ -21,7 +21,7 @@ public class ProyectoFacturacion {
      */
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.CremeCoffeeSkin");
+        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.MistAquaSkin");
         SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceSteelBlueTheme");
         //VistaLogin login = new VistaLogin();
         //login.setVisible(true);

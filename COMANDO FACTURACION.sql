@@ -1,16 +1,18 @@
 #CREAR BASE DE DATOS
 CREATE DATABASE facturacion
 
-USE facturacion;
+use facturacion;
 
 #CREAR TABLA TBLUSURIO
 CREATE TABLE tblusuario
-(codigo INT PRIMARY KEY AUTO_INCREMENT,
+(nocedula BIGINT PRIMARY KEY,
 usuario VARCHAR(50) NOT NULL, 
 email VARCHAR(320) NOT NULL,
 contraseña VARCHAR(20)  NOT NULL,
 nombre VARCHAR(50) NOT NULL,
-rol varchar(50) NOT NULL);
+rol varchar(50) NOT NULL,
+apellido varchar(50) NOT NULL,
+tipodocumento varchar(50) NOT NULL);
 
 #CREAR TABLA TBLCLIENTE
 CREATE TABLE tblcliente
@@ -32,6 +34,7 @@ nombre varchar(255));
 select * from municipio;
 select * from tblcliente;
 select * from tblproducto;
+select * from tblusuario;
 
 insert into municipio 
 values(1, 'MEDELLIN - MEDELLIN - ANTIOQUIA');

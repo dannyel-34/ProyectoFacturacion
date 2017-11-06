@@ -134,104 +134,6 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel4">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="INVENTARIO DE PRODUCTOS">
-                    <Property name="tabTitle" type="java.lang.String" value="INVENTARIO DE PRODUCTOS"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="745" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtCodigobus" min="-2" pref="248" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnbuscar" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnMostrarDatos" min="-2" pref="188" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="154" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtCodigobus" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="btnbuscar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="btnMostrarDatos" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="261" max="-2" attributes="0"/>
-                          <EmptySpace pref="259" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblProductos">
-                      <Properties>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="0" rowCount="0"/>
-                        </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0"/>
-                        </Property>
-                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JTextField" name="txtCodigobus">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel10">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="INGRESE CODIGO PRODUCTO :"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnbuscar">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="BUSCAR"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbuscarActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnMostrarDatos">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="MOSTRAR TODOS LOS DATOS"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarDatosActionPerformed"/>
-                  </Events>
-                </Component>
-              </SubComponents>
-            </Container>
             <Container class="javax.swing.JPanel" name="jPanel3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -249,13 +151,12 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
@@ -281,18 +182,19 @@
                                               <Component id="txtNombre" alignment="0" min="-2" pref="273" max="-2" attributes="0"/>
                                               <Component id="txtCodigo" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace pref="105" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="btnNuevo" min="-2" pref="116" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnGuardar" min="-2" pref="116" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnModificar" min="-2" pref="116" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnGuardar" max="32767" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="btnModificar" min="-2" pref="139" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnSalir3" min="-2" pref="116" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
@@ -386,48 +288,40 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnGuardar" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnModificar" alignment="1" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                          <Component id="btnNuevo" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                                          <Component id="btnSalir3" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="cbxCategoria" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="cbxEstado" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnSalir3" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="btnModificar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="btnGuardar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="btnNuevo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jSeparator1" min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtCodigobus2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="btnbuscar2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="btnMostrarDatos2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" pref="64" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtCodigobus2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btnMostrarDatos2" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="jButton1" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="btnbuscar2" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane4" min="-2" pref="138" max="-2" attributes="0"/>
-                          <EmptySpace pref="16" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -575,7 +469,7 @@
                 <Component class="javax.swing.JButton" name="btnGuardar">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenes/16 (Save).jpg"/>
+                      <Image iconType="3" name="/Imagenes/Guardar.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="GUARDAR"/>
                   </Properties>
@@ -586,7 +480,7 @@
                 <Component class="javax.swing.JButton" name="btnModificar">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenes/16 (User edit).jpg"/>
+                      <Image iconType="3" name="/Imagenes/Modificar.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MODIFICAR"/>
                   </Properties>
@@ -646,7 +540,7 @@
                 <Component class="javax.swing.JButton" name="btnbuscar2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenes/16 (Search).jpg"/>
+                      <Image iconType="3" name="/Imagenes/Buscar.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="BUSCAR"/>
                   </Properties>
@@ -662,21 +556,10 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarDatos2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="jSeparator1">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="INVENTARIO">
-                          <Font PropertyName="font" name="Tahoma" size="14" style="1"/>
-                        </TitledBorder>
-                      </Border>
-                    </Property>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JButton" name="jButton1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenes/61-32.png"/>
+                      <Image iconType="3" name="/Imagenes/document-print-32.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="IMPRIMIR REPORTE"/>
                   </Properties>
@@ -687,7 +570,7 @@
                 <Component class="javax.swing.JButton" name="btnNuevo">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenes/16 (User add).jpg"/>
+                      <Image iconType="3" name="/Imagenes/Nuevo.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Nuevo"/>
                   </Properties>

@@ -55,7 +55,7 @@ FROM
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="6"/>
+			<band height="31"/>
 		</groupFooter>
 	</group>
 	<background>
@@ -163,7 +163,7 @@ Teléfono: (1)4363381]]></text>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="6" splitType="Stretch">
+		<band height="61" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="597ce230-b262-4ea3-8bb3-e1341d450088"/>
 				<graphicElement>
