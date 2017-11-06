@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b3d757b6-df32-4f03-8ff3-87f56192056e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     tblproducto.`codigo` AS tblproducto_codigo,
+     tblproducto.`nombre` AS tblproducto_nombre,
+     tblproducto.`descripcion` AS tblproducto_descripcion,
+     tblproducto.`categoria` AS tblproducto_categoria,
+     tblproducto.`estado` AS tblproducto_estado,
+     tblproducto.`stock` AS tblproducto_stock,
+     tblproducto.`preciounitario` AS tblproducto_preciounitario
+FROM
+     `tblproducto` tblproducto]]>
+	</queryString>
+	<field name="tblproducto_codigo" class="java.lang.String"/>
+	<field name="tblproducto_nombre" class="java.lang.String"/>
+	<field name="tblproducto_descripcion" class="java.lang.String"/>
+	<field name="tblproducto_categoria" class="java.lang.String"/>
+	<field name="tblproducto_estado" class="java.lang.String"/>
+	<field name="tblproducto_stock" class="java.lang.Integer"/>
+	<field name="tblproducto_preciounitario" class="java.lang.Float"/>
+	<group name="tblproducto_codigo">
+		<groupExpression><![CDATA[$F{tblproducto_codigo}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#3399FF" uuid="0181d004-2ee4-400a-85c4-3cdc29a195f0"/>
+					<rectangle>
+						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#33CCFF" uuid="34570db4-0362-49c1-8192-2930ba4fdb98"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement style="SubTitle" x="68" y="0" width="755" height="24" forecolor="#000000" uuid="babdf049-a5e6-4d5c-9978-bbd2d880a0fa"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{tblproducto_codigo}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="252" height="62" uuid="4edef0d1-5f0b-43be-ad7b-efafcbd2fd65"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Book Antiqua" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Inventario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="361" y="52" width="73" height="22" uuid="95b21739-7e01-4fb1-ab5f-bff9ce60aebd"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Articulos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="74" width="383" height="52" uuid="790886f3-a5a9-43bf-91c7-47f5900a4b8c"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Razón Social: COLORES INFANTIL S A S
+Domicilio Social: CARRERA 89 A 80 63, BOGOTA, BOGOTA
+Forma jurídica: SOCIEDAD POR ACCIONES SIMPLIFICADA
+Actividad: Confeccion de prendas de vestir excepto prendas de piel
+Teléfono: (1)4363381]]></text>
+			</staticText>
+			<image>
+				<reportElement x="13" y="0" width="185" height="111" uuid="ac888f0c-1140-4e1f-8f67-8dbb67852201"/>
+				<imageExpression><![CDATA["C:\\Users\\Usuario\\Documents\\NetBeansProjects\\ProyectoFacturacion\\src\\proyectofacturacion\\Reporte\\Productos\\logito.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="613a0208-4557-4532-9c48-55d05abb535a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="133" height="15" forecolor="#736343" uuid="74f36415-141e-4eda-b982-b3c5aba6e42c"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="133" y="0" width="133" height="15" forecolor="#736343" uuid="3fb003ad-32b2-46d3-9368-528a2c549d84"/>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="266" y="0" width="133" height="15" forecolor="#736343" uuid="6da78e6d-19bd-4bca-9df9-303f6ef75277"/>
+				<text><![CDATA[CATEGORIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="399" y="0" width="133" height="15" forecolor="#736343" uuid="bd53b01c-8921-4f88-8408-41875aa6fab1"/>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="532" y="0" width="133" height="15" forecolor="#736343" uuid="b4cad948-ead6-4cca-96fd-2874b6bce015"/>
+				<text><![CDATA[STOCK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="665" y="0" width="133" height="15" forecolor="#736343" uuid="f53c08e1-e8ff-4337-bf82-ad693cddcb50"/>
+				<text><![CDATA[PRECIO UNITARIO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="53686a33-afe0-43a2-aa53-0b987c35db11"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="133" height="15" uuid="cbe30b87-1f9e-4c7f-9106-46c964f07037"/>
+					<textFieldExpression><![CDATA[$F{tblproducto_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="133" y="0" width="133" height="15" uuid="c648fd67-a356-475e-85e7-aa58b0b17f05"/>
+					<textFieldExpression><![CDATA[$F{tblproducto_descripcion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="266" y="0" width="133" height="15" uuid="8095a9ae-ac2a-4b02-bde4-17a26212dc01"/>
+					<textFieldExpression><![CDATA[$F{tblproducto_categoria}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="399" y="0" width="133" height="15" uuid="52228dd0-2a15-4bad-acc4-c68c6d512ada"/>
+					<textFieldExpression><![CDATA[$F{tblproducto_estado}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="532" y="0" width="133" height="15" uuid="d797cb4d-2dd8-4b63-9801-8436e6d4e9e9"/>
+					<textFieldExpression><![CDATA[$F{tblproducto_stock}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="665" y="0" width="133" height="15" uuid="db464a9c-48fa-4527-b8aa-f310e484186c"/>
+					<textFieldExpression><![CDATA[$F{tblproducto_preciounitario}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="597ce230-b262-4ea3-8bb3-e1341d450088"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#3399FF" uuid="b4581ec0-a195-4205-abee-d64b8c053a8d"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="f3ce57d0-d630-4681-8cf4-8a4895bd63dd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="6d0c0061-0b20-48e8-8309-0977a29f3988"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#000000" uuid="ab2a85b4-679d-4425-8e71-082bb2b92afd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
