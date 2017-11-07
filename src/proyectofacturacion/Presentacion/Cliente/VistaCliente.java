@@ -36,7 +36,7 @@ public class VistaCliente extends javax.swing.JFrame {
         v = new Validaciones();
         con = new Conexion();
         this.cbxMunicipio.removeAllItems();
-        mostrarDatos();
+        mostrarDatos("");
         mostrarDatosMunicipio();
     }
 
@@ -52,7 +52,7 @@ public class VistaCliente extends javax.swing.JFrame {
         txtDNI.setText(null);
     }
 
-    public void mostrarDatos() {
+    public void mostrarDatos(String bus) {
 
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("CODIGO");
@@ -66,12 +66,28 @@ public class VistaCliente extends javax.swing.JFrame {
         modelo.addColumn("DIRECCION");
         modelo.addColumn("PROVINCIA");
         tblClientes.setModel(modelo);
-
+        
+        String sql = "";
+        
+        if(txtBuscar.getText().equals("")){
+            sql = "select * from tblcliente";
+        }else{           
+            switch(cbxTipo.getSelectedIndex()){
+                case 0: 
+                    sql = "select * from tblcliente where dni='"+bus+"'";
+                    break;
+                case 1:
+                    sql = "select * from tblcliente where ruc='"+bus+"'";
+                    break;
+                default: 
+                    JOptionPane.showMessageDialog(null, "Opcion invalida");
+            }
+        }
         String[] datos = new String[10];
 
         try {
             Statement st = con.conexion().createStatement();
-            ResultSet rs = st.executeQuery("select * from tblcliente");
+            ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
                 datos[0] = rs.getString(1);
@@ -153,6 +169,7 @@ public class VistaCliente extends javax.swing.JFrame {
         btnbuscar = new javax.swing.JButton();
         btnmostrar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
+        cbxTipo = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -297,8 +314,18 @@ public class VistaCliente extends javax.swing.JFrame {
 
         btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/16 (Search).jpg"))); // NOI18N
         btnbuscar.setText("BUSCAR ");
+        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarActionPerformed(evt);
+            }
+        });
 
         btnmostrar.setText("MOSTRAR DATOS");
+        btnmostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmostrarActionPerformed(evt);
+            }
+        });
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/16 (User add).jpg"))); // NOI18N
         btnNuevo.setText("NUEVO");
@@ -308,6 +335,8 @@ public class VistaCliente extends javax.swing.JFrame {
             }
         });
 
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "RUC" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -316,47 +345,52 @@ public class VistaCliente extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnbuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10))
-                                .addGap(46, 46, 46)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtTel)
-                                            .addComponent(cbxSexo, javax.swing.GroupLayout.Alignment.TRAILING, 0, 217, Short.MAX_VALUE)
-                                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addGap(18, 18, 18)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel18))
-                                        .addGap(8, 8, 8)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel16)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel14)
+                                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel10))
+                                        .addGap(46, 46, 46)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                                            .addComponent(txtDNI)
-                                            .addComponent(txtRUC)))
-                                    .addComponent(txtDireccion)
-                                    .addComponent(txtCorreo)
-                                    .addComponent(cbxMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtTel)
+                                                    .addComponent(cbxSexo, javax.swing.GroupLayout.Alignment.TRAILING, 0, 217, Short.MAX_VALUE)
+                                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel17)
+                                                    .addComponent(jLabel13)
+                                                    .addComponent(jLabel18))
+                                                .addGap(8, 8, 8)
+                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                                                    .addComponent(txtDNI)
+                                                    .addComponent(txtRUC)))
+                                            .addComponent(txtDireccion)
+                                            .addComponent(txtCorreo)
+                                            .addComponent(cbxMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(cbxTipo, 0, 200, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnbuscar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(12, 12, 12)))
                                 .addGap(18, 18, 18)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -368,8 +402,7 @@ public class VistaCliente extends javax.swing.JFrame {
                                                 .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(25, 25, 25))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -423,13 +456,14 @@ public class VistaCliente extends javax.swing.JFrame {
                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
@@ -578,7 +612,7 @@ public class VistaCliente extends javax.swing.JFrame {
                 stm.setInt(10, cbxMunicipio.getSelectedIndex());
                 int r = stm.executeUpdate();
                 limpiar();
-                mostrarDatos();
+                mostrarDatos("");
 
                 if (r > 0) {
                     JOptionPane.showMessageDialog(null, "Cliente guardado correctamente");
@@ -640,7 +674,7 @@ public class VistaCliente extends javax.swing.JFrame {
                     + "', codmunicipio='" + cbxMunicipio.getSelectedIndex()
                     + "' where codigo='" + txtCodigo.getText() + "'");
             stm.executeUpdate();
-            mostrarDatos();
+            mostrarDatos("");
             JOptionPane.showMessageDialog(null, "Producto Actualzido!");
 
         } catch (SQLException ex) {
@@ -661,7 +695,7 @@ public class VistaCliente extends javax.swing.JFrame {
                     + "where codigo='" + cod + "'");
             stm.executeUpdate();
             JOptionPane.showMessageDialog(null, "El producto Eliminado");
-            mostrarDatos();
+            mostrarDatos("");
         } catch (SQLException ex) {
             Logger.getLogger(FormProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -678,6 +712,14 @@ public class VistaCliente extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
+        mostrarDatos(txtBuscar.getText());
+    }//GEN-LAST:event_btnbuscarActionPerformed
+
+    private void btnmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmostrarActionPerformed
+        mostrarDatos("");
+    }//GEN-LAST:event_btnmostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -723,6 +765,7 @@ public class VistaCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnmostrar;
     private javax.swing.JComboBox<String> cbxMunicipio;
     private javax.swing.JComboBox<String> cbxSexo;
+    private javax.swing.JComboBox<String> cbxTipo;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;

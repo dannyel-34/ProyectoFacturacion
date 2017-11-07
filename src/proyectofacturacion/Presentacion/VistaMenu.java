@@ -326,6 +326,7 @@ public class VistaMenu extends javax.swing.JFrame {
     private void jCheckBoxMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4ActionPerformed
         new VistaCliente().setVisible(true);
         jCheckBoxMenuItem4.setEnabled(false);
+        dispose();
     }//GEN-LAST:event_jCheckBoxMenuItem4ActionPerformed
 
     private void jCheckBoxMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem5ActionPerformed
@@ -372,6 +373,8 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void jCheckBoxMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem12ActionPerformed
         new Creador().setVisible(true);
+        jCheckBoxMenuItem12.setEnabled(false);
+        
     }//GEN-LAST:event_jCheckBoxMenuItem12ActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed

@@ -31,6 +31,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+import proyectofacturacion.Presentacion.Usuario.ListaUsuarios;
 
 public class FormProducto extends javax.swing.JFrame {
 
@@ -40,7 +41,6 @@ public class FormProducto extends javax.swing.JFrame {
     Validaciones v;
     Conexion con;
     DefaultTableModel tabla = new DefaultTableModel();
-    GeneradorCodigos g;
 
     PreparedStatement stm, stm2;
     ResultSet rs;
@@ -51,7 +51,55 @@ public class FormProducto extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         con = new Conexion();
         mostrarDatos("");
+        //txtCodigo.setEnabled(false);
+        //generar_codproducto();
 
+    }
+
+    public void generar_codproducto() {
+        int j;
+
+        String codigo = "";//Vrble axiliar para guardar el primer dato de la tabla producto
+
+        String sql = "select max(codigo) as codigo from tblproducto";//declaramos la variable tipo String sql llevar nuestro consulta ala base d edatos. luego sera ejecuta por el stateent
+
+        try {
+            //definimos un variable tipo Statement.
+            //llamamos el metodo que nos retorna nuestra conection tipo Connection.
+            //Creamos un nuevo statement.
+            Statement stm = con.conexion().createStatement();
+            ResultSet rs = stm.executeQuery(sql);//Definimos un variable del tipo Resultset
+            //con el stm que ejecutamos el sentencia sql llamand al metodo executeQuery.
+
+            //definimos una estrucutrua condicional simple para recoger nuestro registro
+            if (rs.next()) {
+                codigo = rs.getString(1);//a la variable codigo le llevamos el dato que esta columna codigo.
+            }
+            System.out.print(codigo);//IMprimos por cnsola el contenido de la variable codigo.
+
+            //definimos otra estructura condional para validar si codigo(String) no cuentiene nada es igual a null
+            //la primera entra a esta condicion y le 
+            //lleva al campo de texto un codigo por defecto.
+            if (codigo == null) {
+                txtCodigo.setText("CP0001");
+
+            } else {
+                int r1 = codigo.charAt(2);//ala Variable r1 definida como Int(Numerico entero), le llevmos caracter codigo le extramos la posicion dos de la cadena 
+                int r2 = codigo.charAt(3);
+                int r3 = codigo.charAt(4);
+                int r4 = codigo.charAt(5);
+                System.out.print(r1+r2+r3+r4);//imprimos por cosola "pantalla" los contenidos de las variables r1,r2,r3,r4
+                String cadena = ""+r1+r2+r3+r4;//a cadena le contatemos los datos que ahy en las cuatro vatiables
+                int d = Integer.parseInt(cadena);//convertir a entero la cadena y se la pasamos a una variable d definida como entero
+                System.out.print("\nEste es el valor numerico de: " + d);
+                GenerarCodigo gc = new GenerarCodigo();//Cremamos un objecto de la clase GeenrarCodigo(instanciamos la clase)
+                gc.generar_codigo(d);//gc es objecto instancia ala clase. ejecutmos el metood generar codigo le pasamos o enviamos como parametro el dato ue convertimos a tenero
+                txtCodigo.setText(gc.serie());//Colocamos en campo texto el dato u valor que retorna el metood que llamos con el objecto gc al clase
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FormProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -103,6 +151,7 @@ public class FormProducto extends javax.swing.JFrame {
         btnMostrarDatos2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("INGRESE CODIGO PRODUCTO :");
@@ -285,6 +334,14 @@ public class FormProducto extends javax.swing.JFrame {
             }
         });
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar2.png"))); // NOI18N
+        btnEliminar.setText("ELIMINAR");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -321,9 +378,9 @@ public class FormProducto extends javax.swing.JFrame {
                                 .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -353,7 +410,9 @@ public class FormProducto extends javax.swing.JFrame {
                                         .addComponent(btnbuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnMostrarDatos2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(149, 149, 149)))
+                                        .addGap(27, 27, 27)
+                                        .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addComponent(jButton1)))
                         .addContainerGap(32, Short.MAX_VALUE))))
         );
@@ -397,9 +456,8 @@ public class FormProducto extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(39, 39, 39)
                         .addComponent(jLabel12))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -410,15 +468,21 @@ public class FormProducto extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCodigobus2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMostrarDatos2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnbuscar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCodigobus2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMostrarDatos2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnbuscar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                            .addComponent(btnSalir3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addGap(19, 19, 19))
         );
 
         jTabbedPane1.addTab("REGISTRO PRODUCTO", jPanel3);
@@ -579,8 +643,11 @@ public class FormProducto extends javax.swing.JFrame {
                 stm.setString(9, txtFoto.getText());
                 stm.execute();
                 mostrarDatos("");
+                //generar_codproducto();
                 JOptionPane.showMessageDialog(null, "Los datos fueron guardados con éxito!");
                 limpiar();
+                txtFoto.setText(null);
+                jLabel8.setText(null);
             } catch (SQLException ex) {
                 Logger.getLogger(FormProducto.class.getName()).log(Level.SEVERE, null, ex);
             } catch (FileNotFoundException ex) {
@@ -669,21 +736,39 @@ public class FormProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        try{
+
+        try {
             String dir = "C:\\Users\\Usuario\\Documents\\NetBeansProjects\\ProyectoFacturacion\\src\\proyectofacturacion\\Reporte\\Productos\\Inventario.jrxml";
             JasperReport reporteJasper = JasperCompileManager.compileReport(dir);
             JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteJasper, null, con.conexion());
             JasperViewer.viewReport(mostrarReporte);
-        }catch(JRException ex){
+        } catch (JRException ex) {
             Logger.getLogger(FormProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
+        limpiar();
+        generar_codproducto();
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+
+        int fila = tblProductos2.getSelectedRow();
+
+        String codigo = tblProductos2.getValueAt(fila, 0).toString();
+
+        try {
+            PreparedStatement stmt = con.conexion().prepareStatement("delete from tblproducto where codigo='" + codigo + "'");
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Producto Eliminado");
+            mostrarDatos("");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FormProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -721,6 +806,7 @@ public class FormProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnMostrarDatos1;
