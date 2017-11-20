@@ -178,7 +178,7 @@ public class VistaLogin extends javax.swing.JFrame {
         char[] clave = txtPassword.getPassword();
         String ps = new String(clave);
 
-        String rol = null;
+        int sw = 0;
 
         try {
             Statement stmt = con.conexion().createStatement();
@@ -206,20 +206,22 @@ public class VistaLogin extends javax.swing.JFrame {
                     };
                     t = new Timer(100, ac);
                     t.start();
-                    
 
-                    JOptionPane.showMessageDialog(null, "Bienvenido\n"
-                            + "Has ingresado satisfactoriamente al sistema", "Mensaje de bienvenida",
-                            JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                     m.setVisible(true);
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-                            + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
-                            JOptionPane.ERROR_MESSAGE);
+                    sw = 1;
                 }
 
+            }
+
+            if (sw == 1) {
+                JOptionPane.showMessageDialog(null, "Bienvenido\n"
+                        + "Has ingresado satisfactoriamente al sistema", "Mensaje de bienvenida",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
+                        + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
+                        JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
             Logger.getLogger(VistaLogin.class.getName()).log(Level.SEVERE, null, ex);
